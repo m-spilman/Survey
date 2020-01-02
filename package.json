@@ -9,10 +9,12 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "file-saver": "^2.0.2",
     "knex": "^0.20.4",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.2",
     "pg": "^7.15.1",
+    "pg-copy-streams": "^2.2.2",
     "uuid": "^3.3.3"
   },
   "devDependencies": {},
