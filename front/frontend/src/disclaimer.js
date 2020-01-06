@@ -1,12 +1,6 @@
 import React from "react";
 
 const Disclaimer = props => {
-  // const styleBackground={
-  //     textAlign: 'center',
-  //     fontSize: 40,
-  //     margin: 'auto',
-  //     width: '50%'
-  // }
 
   return (
     <div>
@@ -41,7 +35,6 @@ const Disclaimer = props => {
               </p>
             </div>
             <div className="modal-footer">
-              {/* <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> */}
               <button
                 type="button"
                 className="btn btn-default"
@@ -54,8 +47,6 @@ const Disclaimer = props => {
           </div>
         </div>
       </div>
-
-      {/* <p style = {styleBackground}>If you closed the prompt without accepting 🙁, AND would wish to take the survey please refresh the page</p> */}
     </div>
   )
   }

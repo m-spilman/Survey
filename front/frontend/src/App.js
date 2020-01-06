@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import Disclaimer from './disclaimer'
-import ReviewData from './reviewData'
-import { CSVLink } from "react-csv"
+import SameUser from './SameUser'
 const uuidv4 = require('uuid/v4')
-let survey = require("./dummy-front");
-
-
+var model =''
+let survey = {}
 
 
 export default class App extends Component {
@@ -15,12 +13,9 @@ export default class App extends Component {
   state = {
     acceptedDisclaimer: false,
     uuid: '',
-    survey: '',
-    // steve: 2,
-    items: []
+    items: [],
+    sameUser:'no'
   }
-
-
 
 
 onComplete = (survey, options) => {
@@ -36,55 +31,67 @@ var data = JSON.stringify(rawData)
 xhr.send(data);
 
  }
+// function baseUrl () {
+//   if (inProductionMode) {
+//     return ''
+//   }
+//   return 'https://localhost:573753/api/'
+// }
 
  accept =() =>{
    this.setState({
      uuid: uuidv4(),
      acceptedDisclaimer: true,
-     survey: survey,
-     items : []
-
+     items : [],
    })
+
+ 
 }
-
-
 getData =  () => {
   fetch('http://localhost:3001/exportData')
   .then(response => response.json())
-  .then(items => this.setState({items}))
+  .then(items => this.setState({items}, function (){
+  }))
   .catch(err => console.log(err))
 }
+
+getSurvey = () => {
+  fetch('http://localhost:3001/getSurvey')
+  .then(response => response.json())
+  .then(function(results){
+    if(results.length!== 0)
+    survey = results[0].data
+  }).then(function(){
+    model = new Survey.Model(survey);
+  })
+}
 componentDidMount(){
+  this.getSurvey()
   this.getData()
-  const script = document.createElement("script");
-
-  script.src = "surveyCreator.js";
-  script.async = true;
-
-  document.body.appendChild(script);
+  if(localStorage.getItem('sameUser'))
+  {
+    this.setState({
+      sameUser: 'yes'
+    })
+  }
 }
 
- render() {
+componentWillUpdate()
+{
+  localStorage.setItem('sameUser', 'yes')
+}
 
-  var model = new Survey.Model(survey);
-  
-  if(this.state.steve === 2){
-    return  (<CSVLink
-    filename={"db.csv"}
-    color="primary"
-    style={{float: "left", marginRight: "10px"}}
-    className="btn btn-primary"
-    data={this.state.items}>
-    Download CSV
-  </CSVLink>)
+render() {
+  if(this.state.sameUser === 'yes'){
+    return <SameUser></SameUser>
   }
-
   if(this.state.acceptedDisclaimer === true){
    return  <Survey.Survey model={model} onComplete={this.onComplete}/>
   }
   if(this.state.acceptedDisclaimer === false){
     return <Disclaimer accept = {this.accept.bind(this)}></Disclaimer>
   }
+ 
  
   
  }

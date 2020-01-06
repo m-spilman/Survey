@@ -6,7 +6,11 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const port = process.env.PORT || 3001;
-// const adminPage = require ('./front/frontend//public/admin.html')
+const fs = require("fs");
+const createPage = fs.readFileSync("./creator/creator.html", "utf8")
+const whereTo = fs.readFileSync('whereTo.html', 'utf8')
+
+
 
 app.use(express.json())
 app.use(express.urlencoded())
@@ -19,7 +23,6 @@ app.use(express.static('public'));
 app.listen(port, function() {
     console.log("Runnning on " + port);
   })
-
 // ---- POSTS -----  
 
 app.post('/results', function(req, res){
@@ -31,13 +34,16 @@ app.post('/results', function(req, res){
 
 app.post ('/saveSurvey', function (req, res){
   saveSurvey(req.body.survey ).then(function(){
+    res.send(adminPage)
 
   })
-
-
-
 })
-
+app.post('/admin', function(req,res){
+  if(req.body.username === 'lee' && req.body.password === 'flex2020'){
+    res.send(whereTo)
+  }
+  else res.redirect('http://localhost:3000/admin')
+})
 
 //    --- GETS -----
 
@@ -45,12 +51,16 @@ app.get('/exportData', function (req,res){
    getTableData(req, res, db)
  })
 
+ app.get('/getSurvey', function (req,res){
+   getSurvey().then(function(response){
+     res.send(response)
+   })
+ })
+ app.get('/createSurvey', function (req,res){
+   res.send(createPage)
 
+ })
 
-// app.get('/admin', function(req,res){
-//   res.sendFile(__dirname +'/front/frontend//public/admin.html')
-  // res.send('banana')
-  // })
 
 //   --- FUNCTIONS -------
 
@@ -80,8 +90,12 @@ async function saveAnswers(answers, id){
 }
 async function saveSurvey(survey) {
 
-  await db('survey').insert({survey:survey})
+  await db('survey').insert({data:survey})
 
+ }
+
+ function getSurvey(){
+  return db.select('*').from('survey')
  }
 
 module.exports = app;

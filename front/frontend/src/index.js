@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 import App from './App';
-import Admin from './Admin'
+import ReviewData from './ReviewData'
+import Login from './Login'
 
 
 const routing = (
     <Router>
       <div>
         <Route exact path="/" component={App} />
-        <Route path="/admin" component={Admin} />
+        <Route path="/review" component={ReviewData} />
+        <Route path="/admin" component={Login} />
       </div>
     </Router>
   )

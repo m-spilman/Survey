@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Create!</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+  <script src="https://surveyjs.azureedge.net/1.1.29/survey.ko.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.min.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js" type="text/javascript"
+    charset="utf-8"></script>
+  <link href="https://surveyjs.azureedge.net/1.1.29/survey-creator.css" type="text/css" rel="stylesheet" />
+  <script src="https://surveyjs.azureedge.net/1.1.29/survey-creator.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js">
+</head>
+
+<body>
+  <form action=" http://localhost:3001/saveSurvey" method="post">
+
+    <div class="form-group purple-border">
+      <label for="exampleFormControlTextarea4">Please copy and past JSON object here</label>
+      <textarea class="form-control" id="exampleFormControlTextarea4" rows="6" name='survey'></textarea>
+    </div>
+    <button type="submit" className="btn btn-dark">
+      Submit
+    </button>
+  </form>
+  <br></br>
+  <a href="http://localhost:3000">Back to survey</a>
+  <br></br>
+
+
+  <div id="surveyContainer">
+    <div id="creatorElement"></div>
+  </div>
+
+  <script>var options = {
+      showLogicTab: true
+    };
+    var creator = new SurveyCreator.SurveyCreator("creatorElement", options);
+
+    creator.showToolbox = "right";
+    creator.showPropertyGrid = "right";
+
+    SurveyCreator
+      .StylesManager
+      .applyTheme("winterstone");</script>
+  <script>
+    removeElementsByClass('svd_commercial_container')
+    function removeElementsByClass(className) {
+      var elements = document.getElementsByClassName(className);
+      while (elements.length > 0) {
+        elements[0].parentNode.removeChild(elements[0]);
+      }
+    }
+  </script>
+
+
+</body>
+
+</html>
