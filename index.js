@@ -39,7 +39,7 @@ app.post ('/saveSurvey', function (req, res){
   })
 })
 app.post('/admin', function(req,res){
-  if(req.body.username === 'lee' && req.body.password === 'flex2020'){
+  if(req.body.username === '' && req.body.password === ''){ 
     res.send(whereTo)
   }
   else res.redirect('http://localhost:3000/admin')
