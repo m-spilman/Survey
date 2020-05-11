@@ -8,12 +8,15 @@ This application allows someone to quickly create a survey from scratch and reco
 # Legal Disclaimer
 <img src="read_me_images/legal.png" width="600"> 
 -------------------------------------------------------------------------
+
 # Simple Survey
 <img src="read_me_images/survey.png" width="600"> 
 -------------------------------------------------------------------------
+
 # Survey Builder
 <img src="read_me_images/survey_builder.png" width="600"> 
 -------------------------------------------------------------------------
+
 # Results CSV
 <img src="read_me_images/results.png" width="600"> 
 
