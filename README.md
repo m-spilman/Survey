@@ -6,8 +6,11 @@ Survey App using survey.js - https://surveyjs.io/
 This application allows someone to quickly create a survey from scratch and record answers in a PostgreSQL databse. It was designed for a specific person to use on a masters thesis project. It is a little hacked together, and not exactly something I would intend for general public use. However!, it does what it needs to and was completed on time 8 )
 
 <img src="read_me_images/legal.png" width="600"> 
+-------------------------------------------------------------------------
 <img src="read_me_images/survey.png" width="600"> 
+-------------------------------------------------------------------------
 <img src="read_me_images/survey_builder.png" width="600"> 
+-------------------------------------------------------------------------
 <img src="read_me_images/results.png" width="600"> 
 
 
