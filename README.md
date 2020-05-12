@@ -48,7 +48,7 @@ There is an unpublished route /admin. This will take you to a landing page where
 
 Building a survey is rather straight forward. The database will only hold 1 survey at a time. It was not a requirement to store multiple surveys and keep track of which responses went to which survey. The user was only going to do one survey. I did not want the possibility that he accidenty had 2 surveys, people where taking his initial 'test survey' and not the one he wanted etc. 
 ### To Use
-First delete the current survey using the 'drop survey' button. Delete the current stored results using the 'delete all responses' button. Drag and drop the survey components from the righthand side onto the survey. Edit the fields. Once completed you can test your survey using 'test survey'. To 'publish' the survey, click the JSON editor. Copy the object and paste it into the field at the top of the page titled 'Please copy and paste JSON object here'. Click submit.
+Navigate to /admin and use the username / password detailed above. First delete the current survey using the 'drop survey' button. Delete the current stored results using the 'delete all responses' button. Drag and drop the survey components from the righthand side onto the survey. Edit the fields. Once completed you can test your survey using 'test survey'. To 'publish' the survey, click the JSON editor. Copy the object and paste it into the field at the top of the page titled 'Please copy and paste JSON object here'. Click submit.
 
 
 
